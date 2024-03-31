@@ -1,0 +1,114 @@
+<%- include('layout/header')%>
+<style>
+    body {
+        height: 100vh;
+        width: 100vw;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(45deg, #FFA500 0%, #FF69B4 50%, #FFFF00 100%);
+    }
+
+    .table-responsive {
+        margin-top: 20px;
+    }
+
+    .table {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    th, td {
+        text-align: center;
+        vertical-align: middle !important;
+    }
+
+    th {
+        background-color: #20c997;
+        color: #a23b3b;
+        font-weight: bold;
+        font-size: 16px;
+        padding: 12px;
+    }
+
+    td {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .table-hover tbody tr:hover {
+        background-color: #f2f2f2;
+    }
+
+    .action-icons {
+        font-size: 20px;
+    }
+
+    .action-icons a {
+        color: #28a745;
+        margin-right: 5px;
+    }
+
+    .action-icons a:hover {
+        color: #218838;
+    }
+
+    .no-users-found {
+        font-size: 20px;
+        color: #6c757d;
+        text-align: center;
+        margin-top: 50px;
+    }
+</style>
+<div class="container">
+    <div class="row my-4">
+        <div class="col-lg-12">
+            <% if(message){%>
+                <div class="alert alert-dismissible fade show alert-<%=message.type %>"
+                     role="alert">
+                    <button class="btn-close" type="button" data-bs-dismiss="alert"
+                            aria-label="close"></button>
+                    <strong><%= message.message %></strong>
+                </div>
+            <% }%>
+            <div class="table-responsive">
+                <% if(users.length > 0){%>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>CIN</th>
+                                <th>Image</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Grade</th>
+                                <th>Score</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% users.forEach((user) => { %>
+                                <tr>
+                                    <td><%= user.cin %></td>
+                                    <td><img src="<%= user.image %>" width="50" class="img-thumbnail"></td>
+                                    <td><%= user.name %></td>
+                                    <td><%= user.email %></td>
+                                    <td><%= user.phone %></td>
+                                    <td><%= user.grade %></td>
+                                    <td><%= user.moy %></td>
+                                    <td class="action-icons">
+                                        <a href="/edit/<%= user._id %>" class="text-success"><i class="fas fa-edit mx-1"></i></a>
+                                        <a href="/delete/<%= user._id %>" class="text-danger"><i class="fas fa-trash mx-1"></i></a>
+                                    </td>
+                                </tr>
+                            <% }); %>
+                        </tbody>
+                    </table>
+                <% } else { %>
+                    <h1 class="no-users-found">No Users found</h1>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include('layout/footer')%>

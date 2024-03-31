@@ -1,0 +1,99 @@
+<%- include('layout/header')%>
+<style>
+    body {
+        background: linear-gradient(45deg, #FFA500 0%, #FF69B4 50%, #FFFF00 100%);
+    }
+
+    .card {
+        background-color: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
+    }
+
+    .card-header {
+        background-color: #ffbe2c; 
+        color: white;
+    }
+
+    label {
+        color: #333; 
+        font-weight: bold; 
+    }
+
+    
+    .card-header h3 {
+        color: #fff;
+        font-weight: bold;
+    }
+
+    .btn-primary {
+        background-color: #FF6347; 
+        border-color: #FF6347;
+    }
+
+    .input-icon {
+        position: relative;
+    }
+
+    .input-icon i {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 10px;
+        color: #333;
+    }
+</style>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 mx-auto mt-4">
+            <div class="card shadow">
+                <div class="card-header bg-danger">
+                    <h3 class="text-light">Add new student</h3>
+                </div>
+                <div class="card-body p-4">
+                     <form action="/add" method="post" id="add-form"  enctype="multipart/form-data" >
+                        <div class="mb-3 input-icon">
+                            <label for="name">Image</label>
+                            <input type="file" name="image" class="form-control form control-lg" placeholder="Select image" />
+                            <i class="fas fa-image"></i> 
+                        </div>
+                       <div class="mb-3 input-icon">
+                        <label for="cin">CIN</label>
+                        <input type="text" name="cin" class="form-control form control-lg" placeholder="Enter CIN" required/>
+                        <i class="fas fa-id-card"></i> 
+                       </div>
+                       <div class="mb-3 input-icon">
+                        <label for="name">Name</label>
+                        <input type="text" name="name" class="form-control form control-lg" placeholder="Enter name" required/>
+                        <i class="fas fa-user"></i> 
+                       </div>
+                       <div class="mb-3 input-icon">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" class="form-control form control-lg" placeholder="Enter email" required/>
+                        <i class="fas fa-envelope"></i> 
+                       </div>
+                       <div class="mb-3 input-icon">
+                        <label for="phone">Phone</label>
+                        <input type="number" name="phone" class="form-control form control-lg" placeholder="Enter phone" required/>
+                        <i class="fas fa-phone"></i> 
+                       </div>
+                       <div class="mb-3 input-icon">
+                        <label for="grade">Grade</label>
+                        <input type="text" name="grade" class="form-control form control-lg" placeholder="Enter grade" required/>
+                        <i class="fas fa-graduation-cap"></i> 
+                       </div>
+                       <div class="mb-3 input-icon">
+                        <label for="score">Score</label>
+                        <input type="text" name="score" class="form-control form control-lg" placeholder="Enter score" required/>
+                        <i class="fas fa-star"></i> 
+                       </div>
+                       
+                       <div class="mb-3 d-grid">
+                        <button type="submit" value="Add User" class="btn btn-danger btn-lg ">Add student</button>
+                       </div>
+                     </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include('layout/footer')%>
